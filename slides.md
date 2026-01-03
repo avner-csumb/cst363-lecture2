@@ -340,10 +340,17 @@ Is this a problem?
 
 ## Removing duplicate rows
 
+<div class="p-2">
+
+<v-clicks>
+
 - As part of applying an operation of relation algebra, duplicate rows should be removed.
 - Duplicate rows aren’t technically allowed in a valid table.
 - In practice a DB system may allow duplicate rows.
 
+</v-clicks>
+
+</div>
 
 ---
 
@@ -574,6 +581,9 @@ Question: what is a foreign key?
 
 ## SQL for defining a relation schema
 
+<div class="p-2">
+
+
 
 ```sql
 CREATE TABLE department (
@@ -587,9 +597,14 @@ For each attribute we give the attribute name and type.
 
 We also give the primary key.
 
+</div>
+
 ---
 
 ## Another ‘create table’ example
+
+<div class="p-2">
+
 
 ```sql
 CREATE TABLE student (
@@ -607,9 +622,14 @@ The foreign key constraint says:
 The not-null constraint says:
 - no name value in the student table can be null
 
+</div>
+
 ---
 
 ## Attribute types
+
+<div class="p-2">
+
 
 Recall that attributes can only be simple values, like integers, and strings.
 
@@ -627,10 +647,15 @@ Example: 123.45  `isnumeric(5,2)`
 `FLOAT(p)`: a floating-point number with either 4 byte or 8 byte precision 
 
 
+</div>
+
 ---
 
 
 ## Yet another example
+
+<div class="p-2">
+
 
 ```sql
 CREATE TABLE takes (
@@ -652,6 +677,7 @@ CREATE TABLE takes (
 - two foreign keys
 
 
+</div>
 
 ---
 
@@ -681,6 +707,9 @@ What to do when the first row is deleted from the instructor table?
 
 ## Inserting rows into a table
 
+<div class="p-2">
+
+
 ![](/images/patient6.png){class="w-140"}
 
 
@@ -695,6 +724,7 @@ CREATE TABLE patient (
 );
 ```
 
+</div>
 
 ---
 
