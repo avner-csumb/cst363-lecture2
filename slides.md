@@ -169,9 +169,9 @@ WHERE city = 'Berlin' OR city = 'Munich';
 
 <div class="p-2">
 
-Another table from the "courses" DB
+Another table from the `courses` DB
 
-<v-clicks>
+<v-clicks depth="2">
 
 - A tuple represents a relationship between the values of the tuple.
 - A table represents a mathematical relation.
@@ -248,12 +248,15 @@ Another table from the "courses" DB
 
 **database schema:** the relation schemas for all the relations in a database
 
+<v-click>
 
 ```
 student(student_id, student_name, dept_name, tot_cred)
 department(dept_name, building, budget)
 ...
 ```
+
+</v-click>
 
 </div>
 
@@ -424,7 +427,7 @@ The operation takes a table as input and produces a table as output
 
 <v-click>
 
-What happens if we perform a projection on this table using attribute 'Last name'?
+What happens if we perform a `projection` on this table using attribute 'Last name'?
 
 
 </v-click>
@@ -437,7 +440,7 @@ What happens if we perform a projection on this table using attribute 'Last name
 
 <v-click>
 
-<div class="text-center">Is this a problem?</div>
+**Is this a problem?**
 
 </v-click>
 
@@ -453,7 +456,8 @@ What happens if we perform a projection on this table using attribute 'Last name
 
 - As part of applying an operation of relation algebra, duplicate rows should be removed.
 - Duplicate rows aren't technically allowed in a valid table.
-- In practice a DB system may allow duplicate rows.
+- SQL query results may include duplicates unless you use `DISTINCT`.
+
 
 </v-clicks>
 
@@ -503,11 +507,11 @@ What happens if we perform a projection on this table using attribute 'Last name
 
 What are the names of students with more than 100 credits?
 
-<v-clicks>
+<v-clicks depth="2">
 
 - To get the answer:
   - select the rows of the `student` table with `tot_cred > 100`
-  - get the "name" attribute
+  - get the `name` attribute
 
 </v-clicks>
 
@@ -663,6 +667,7 @@ What are the names of CS instructors and what classes do they teach?
 
 <v-click>
 
+<small>instructor</small>
 ![](/images/instructor.png){class="w-100"}
 
 </v-click>
@@ -675,6 +680,7 @@ What are the names of CS instructors and what classes do they teach?
 
 <v-click>
 
+<small>teaches</small>
 ![](/images/teaches.png){class="w-80"}
 
 </v-click>
@@ -687,8 +693,8 @@ What are the names of CS instructors and what classes do they teach?
 
 ```
 t1 = cross(instructor, teaches)
-t2 = selection(t1, instructor.ID = teaches.ID and dept_name = "Comp. Sci.")
-projection(t2, ["name", "course_id"])
+t2 = selection(t1, instructor.instructor_id = teaches.ID and instructor.dept_name = "Comp. Sci.")
+projection(t2, ["instructor_name", "course_id"])
 ```
 
 </v-click>
@@ -703,22 +709,37 @@ projection(t2, ["name", "course_id"])
 
 To make it look more like math, you can write the operations using Greek letters and symbols
 
-- selection(section, year=2015)
+
+<v-click>
+
+- `selection(section, year=2015)`
   - $\sigma_\text{year=2015} (\text{section})$  	
   - sigma ($\sigma$) --- "selection" starts with "s"
 
+</v-click>
+
 <br>
+
+<v-click>
+
 
 - `projection(section, ["course_id"])`
   - $\pi_\text{course\_id} (\text{section})$
   - pi ($\pi$) --- "projection" starts with "p"
 
+</v-click>
 
 <br>
 
+<v-click>
+
+
 - $\pi_\text{course\_id}(\sigma_\text{year=2015(section)})$
-  - First, filters the section table to only the rows where year = 2015. 
+  - First, filters the `section` table to only the rows where year = 2015. 
   - Then, from those remaining rows, keep only the `course_id` column.
+
+</v-click>
+
 
 </div>
 
@@ -762,26 +783,19 @@ SQL serves as the interface between the database and users/applications
 
 <div class="p-4">
 
-SQL is not just for writing queries.
-
-It has several parts, including:
+SQL is not just for writing queries:
 
 <v-clicks depth="2">
-
 
 - Data-definition language (DDL)
   - create/delete/modify schemas
   - define integrity constraints
   - define views
   - drop tables
-
 - Data-manipulation language (DML)
   - define queries
   - modify tables (insert/delete/modify tuples)
-
-
 - TCL (Transaction Control Language): `BEGIN`, `COMMIT`, `ROLLBACK`
-
 - DCL (Data Control Language): `GRANT`, `REVOKE`
 
 </v-clicks>
@@ -863,7 +877,7 @@ CREATE TABLE department (
 ```sql
 CREATE TABLE student (
    student_id VARCHAR(20) PRIMARY KEY,
-   name VARCHAR(20) NOT NULL,
+   student_name VARCHAR(20) NOT NULL,
    dept_name VARCHAR(20), 
    tot_cred NUMERIC(3, 0),
    FOREIGN KEY (dept_name) REFERENCES department(dept_name)
@@ -878,8 +892,8 @@ CREATE TABLE student (
 
 - The foreign key constraint says:
   - every `dept_name` value in the student table must equal the key of some row in the department table.
-- The not-null constraint says:
-  - no name value in the student table can be `null`
+- The `NOT NULL` constraint says:
+  - no name value in the student table can be `NULL`
 - PostgreSQL requires referenced tables exist before creating FKs --- `department` needs to be created first
 
 </v-clicks>
@@ -894,9 +908,9 @@ CREATE TABLE student (
 
 <v-clicks>
 
-- PRIMARY KEY = UNIQUE + NOT NULL
-- FOREIGN KEY enforces referential integrity
-- NOT NULL disallows missing values
+- `PRIMARY KEY` = `UNIQUE` + `NOT NULL`
+- `FOREIGN KEY` enforces referential integrity
+- `NOT NULL` disallows missing values
 
 </v-clicks>
 
@@ -930,8 +944,11 @@ Here are some of the main types allowed by SQL:
 
 <br>
 
-<small>*In the relational model, attributes are atomic (simple) values. PostgreSQL also supports richer types (e.g., arrays/JSON), but we’ll focus on relational design first.</small>
+<v-click>
 
+<small>*In the relational model, attributes are atomic (simple) values.<br>PostgreSQL also supports richer types (e.g., arrays/JSON), but we’ll focus on relational design first.</small>
+
+</v-click>
 
 </div>
 
@@ -940,7 +957,7 @@ Here are some of the main types allowed by SQL:
 
 ## Yet another example
 
-<div class="p-2">
+<div class="p-4">
 
 
 ```sql
@@ -984,27 +1001,28 @@ CREATE TABLE takes (
 </div>
 </div>
 
-`ID` in the **teaches** table is a foreign key that "points to" the `ID` field of the **instructor** table.
+<v-clicks depth="4">
 
+- `ID` in the **teaches** table is a foreign key that "points to" the `ID` field of the **instructor** table.
+- What to do when the first row is deleted from the instructor table?
 
-What to do when the first row is deleted from the instructor table?
+  - Default: delete is rejected if referenced.
+    - `CASCADE`: referencing rows are deleted automatically.
+      - `CASCADE` is powerful; use intentionally.
 
-- Default: delete is rejected if referenced.
-- `CASCADE`: referencing rows are deleted automatically.
-  - `CASCADE` is powerful; use intentionally.
-
-
+</v-clicks>
 
 
 ---
 
 ## Inserting rows into a table
 
-<div class="p-2">
+<div class="p-4">
 
 
 ![](/images/patient6.png){class="w-140"}
 
+<v-click>
 
 ```sql
 CREATE TABLE patient (
@@ -1016,6 +1034,8 @@ CREATE TABLE patient (
    ward INTEGER
 );
 ```
+
+</v-click>
 
 </div>
 
@@ -1028,6 +1048,10 @@ CREATE TABLE patient (
 
 SQL also has statements to delete and modify rows, as well as batch operations.
 
+
+<v-click>
+
+
 ```sql
 CREATE TABLE patient (
    patient_no INTEGER PRIMARY KEY,
@@ -1039,7 +1063,12 @@ CREATE TABLE patient (
 );
 ```
 
+</v-click>
+
+
 <br>
+
+<v-click>
 
 ```sql
 INSERT INTO patient VALUES (454, 'Smith', 'John', 'M', '1978-08-14', 6);
@@ -1049,13 +1078,22 @@ INSERT INTO patient VALUES (234, 'Jenkins', 'Alan', 'M', '1972-01-29', 7);
 INSERT INTO patient VALUES (244, 'Wells', 'Chris', 'F', '1995-02-25', 6);
 ```
 
+</v-click>
+
+
 </div>
 
 ---
 
 ## More efficient insert
 
+<div class="p-4">
+
 - PostgreSQL supports multi-row insert
+
+<br>
+
+<v-click>
 
 ```sql
 INSERT INTO patient (patient_no, last_name, first_name, sex, date_of_birth, ward)
@@ -1064,40 +1102,51 @@ VALUES
   (223, 'Jones', 'Peter', 'M', '1985-12-07', 8);
 ```
 
+</v-click>
+
+</div>
 
 ---
 
 ## Deleting or Modifying a table
 
-<div class="p-2">
+<div class="p-4">
 
+
+<v-click>
 
 ```sql
 DROP TABLE IF EXISTS instructor;
 ```
 
-- delete the instructor schema and its tuples
+- `DROP TABLE` deletes the table definition (and its data).
+
+</v-click>
+
 
 
 <br>
+
+<v-click>
 
 
 ```sql
 ALTER TABLE instructor ADD office VARCHAR(5);
 ```
 
-- adds attribute ‘office’ to the instructor schema
-- value of office is initialized to ‘null’
+- adds attribute 'office' to the instructor schema
+- value of office is initialized to 'null'
 
+</v-click>
 
 
 </div>
 
 ---
 
-## Summary
+## Part 2 Summary
 
-<div class="p-2">
+<div class="p-4">
 
 <v-clicks>
 
