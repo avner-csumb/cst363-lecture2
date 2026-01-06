@@ -18,7 +18,7 @@ drawings:
 mdc: true
 ---
 
-# Relational Algebra, Data Definition Language, Data Manipulation Language
+# Relational Algebra, DDL, DML
 
 CST 363
 
@@ -26,12 +26,16 @@ CST 363
 
 ## Database schema
 
-<div class="p-2">
+<div class="p-4">
 
-- A schema is the design or structure of a specific database.
-- An instance is a schema "instantiated" with data
+<v-clicks>
 
-</div>
+- A **schema** is the design or structure of a specific database.
+- An **instance** is a schema "instantiated" with data
+
+</v-clicks>
+
+
 
 <div class="grid grid-cols-2 gap-8">
 
@@ -62,6 +66,8 @@ Instance:
   </div>
   </v-click>
 
+</div>
+
 
 </div>
 
@@ -70,32 +76,53 @@ Instance:
 
 ## Database queries
 
-<div class="p-2">
+<div class="p-4">
 
+<v-click>
 
 - A query is a statement requesting the retrieval of information from a database.
-</div>
+
+</v-click>
+
+<v-click>
 
 Example SQL queries:
+
+</v-click>
+
+<v-click>
+
 ```sql
 SELECT *
 FROM customers
 WHERE country = 'Guam';
+```
 
+</v-click>
+
+<br>
+
+<v-click>
+
+```sql
 SELECT *
 FROM customers
 WHERE city = 'Berlin' OR city = 'Munich';
 ```
+</v-click>
+
+
+</div>
 
 ---
 
 ## Transactions
 
-<div class="p-2">
+<div class="p-4">
 
 <v-clicks>
 
-- A transaction is the unit of change in a database. 
+- A transaction is the *unit of change* in a database. 
 - Transactions contain a set of database operations.
 - A transaction must suceed, or fail "completely".
 - For example, a transaction might be used for  moving a student from one class to another.
@@ -114,16 +141,23 @@ WHERE city = 'Berlin' OR city = 'Munich';
 
 ## A Relational DB is a group of tables
 
-<div class="p-2">
+<div class="p-4">
 
+
+<v-clicks>
 
 - A column is also called an **attribute**
 - Each attribute has a **domain**, which is a set of values that are allowed in the column.
 - A row is also called a **tuple**.
 
+</v-clicks>
+
+<v-click>
 
 <small>instructor</small>
 ![](/images/instructor.png){class="w-100"}
+
+</v-click>
 
 </div>
 
@@ -135,15 +169,23 @@ WHERE city = 'Berlin' OR city = 'Munich';
 
 <div class="p-2">
 
-
 Another table from the "courses" DB
+
+<v-clicks>
 
 - A tuple represents a relationship between the values of the tuple.
 - A table represents a mathematical relation.
   - So a table is also called a "relation". This is why we say "relational database".
 
+</v-clicks>
+
+
+<v-click>
+
 <small>course</small>
 ![](/images/course.png){class="w-100"}
+
+</v-click>
 
 </div>
 
@@ -152,13 +194,21 @@ Another table from the "courses" DB
 
 ## Null values
 
-<div class="p-2">
+<div class="p-4">
 
-- Sometimes we don’t know a value, or the value doesn’t exist.
-- In relational DBs we deal with this by using special null values.
+<v-clicks>
+
+- Sometimes we don't know a value, or the value doesn't exist.
+- In relational DBs we deal with this by using special `null` values.
+
+</v-clicks>
+
+<v-click>
 
 <small>instructor</small>
 ![](/images/instructor2.png){class="w-100"}
+
+</v-click>
 
 
 </div>
@@ -168,17 +218,24 @@ Another table from the "courses" DB
 
 ## Relation schema and instances
 
-<div class="p-2">
+<div class="p-4">
 
 
-- relation schema: Gives the names and domains of the attributes (domains not shown here.)
-`student(student_id, student_name, dept_name, tot_cred)`
+<v-clicks depth="2">
 
-- relation instance: an instance of a relation schema (also called a “table”)
+- **relation schema:** Gives the names and domains of the attributes (domains not shown here.)
+  - `student(student_id, student_name, dept_name, tot_cred)`
+- **relation instance:** an instance of a *relation schema* (also called a "table")
 
+</v-clicks>
+
+<v-click>
 
 <small>student</small>
 ![](/images/student2.png){class="w-100"}
+
+</v-click>
+
 
 </div>
 
@@ -187,7 +244,7 @@ Another table from the "courses" DB
 
 ## Database schema and instances
 
-<div class="p-2">
+<div class="p-4">
 
 **database schema:** the relation schemas for all the relations in a database
 
@@ -204,19 +261,24 @@ department(dept_name, building, budget)
 
 ## Database schema and instances (cont.)
 
-<div class="p-2">
+<div class="p-4">
 
 **database instance:** all the tables of the database
 
+<v-click>
 
 <small>student</small>
-![](/images/student3.png){class="w-90"}
+![](/images/student3.png){class="w-100"}
+
+</v-click>
 
 
+<v-click>
 
 <small>department</small>
 ![](/images/dept.png){class="w-70"}
 
+</v-click>
 
 
 
@@ -227,28 +289,34 @@ department(dept_name, building, budget)
 
 ## All the names
 
-<div class="p-2">
-
+<div class="p-4">
 
 In databases there seem to be two or three ways to say everything.
+
+<v-clicks>
 
 - **schema** = relation schema
 - **table** = relation = relation instance = instance
 - tuple = **row**
 - **attribute** = column
 
+</v-clicks>
+
 </div>
 
-<br><br>
+<br>
+
+<v-click>
 
 <div class="text-center">We'll normally use the terms in bold</div>
 
+</v-click>
 
 ---
 
 ## "Functions" on tables
 
-<div class="p-2">
+<div class="p-4">
 
 <v-clicks depth="2">
 
@@ -266,9 +334,9 @@ In databases there seem to be two or three ways to say everything.
 ---
 
 
-## “Selection” operator: Pick out rows of a table
+## "Selection" operator: Pick out rows of a table
 
-<div class="p-2">
+<div class="p-4">
 
 <v-click>
 
@@ -299,53 +367,92 @@ Sex = F
 
 ## “Projection” operator: Pick out columns of a table
 
+
+<div class="p-4">
+
 The operation takes a table as input and produces a table as output
+
+<v-click>
 
 ![](/images/patient3.png){class="w-90"}
 
-“Patient No.”, “First name”
+</v-click>
+
+<v-click>
+
+"Patient No.", "First name"
+
+</v-click>
+
+<v-click>
+
 
 ![](/images/patient4.png){class="w-60"}
 
+</v-click>
 
+</div>
 
 
 ---
 
-## “Union” operator: Add the rows of two tables
+## "Union" operator: Add the rows of two tables
 
+<div class="p-4">
 
+<v-click>
 
 ![](/images/union.png){class="w-160"}
 
+</v-click>
+
+</div>
+
 
 ---
 
-## Question about “projection” operator 
+## Question about "projection" operator 
 
+<div class="p-4">
+
+
+<v-click>
 
 ![](/images/patient5.png){class="w-120"}
 
+</v-click>
 
-What happens if we perform a projection on this table using attribute ‘Last name’?
+<v-click>
 
+What happens if we perform a projection on this table using attribute 'Last name'?
+
+
+</v-click>
+
+<v-click>
 
 ![](/images/lastname.png){class="w-30"}
 
-Is this a problem?
+</v-click>
 
+<v-click>
 
+<div class="text-center">Is this a problem?</div>
+
+</v-click>
+
+</div>
 
 ---
 
 ## Removing duplicate rows
 
-<div class="p-2">
+<div class="p-4">
 
 <v-clicks>
 
 - As part of applying an operation of relation algebra, duplicate rows should be removed.
-- Duplicate rows aren’t technically allowed in a valid table.
+- Duplicate rows aren't technically allowed in a valid table.
 - In practice a DB system may allow duplicate rows.
 
 </v-clicks>
@@ -356,57 +463,111 @@ Is this a problem?
 
 ## Defining the operations
 
+<div class="p-4">
+
+<v-click>
+
 `selection(table, condition)`  
 - return the rows of table that meet the condition
-- example: t = selection(student_name, tot_cred > 100)
+- example: `t = selection(student, tot_cred > 100)`
+
+</v-click>
+
+<v-click>
+
 
 `projection(table, attributes)`
 - returns the specified columns of table
-- example: t = projection(student, ["student_name", "student_id"])
+- example: `t = projection(student, ["student_name", "student_id"])`
+
+</v-click>
+
+
+<v-click>
+
 
 `union(table1, table2)`
 - returns the table containing the rows of table1 and table2
-- example: t = union(student1, student2)
+- example: `t = union(student1, student2)`
+
+</v-click>
+
+</div>
 
 
 ---
 
 ## Answering questions with the functions
 
+<div class="p-5">
+
 What are the names of students with more than 100 credits?
 
+<v-clicks>
 
-To get the answer:
-select the rows of the ‘student’ table with tot_cred > 100
-get the "name" attribute
+- To get the answer:
+  - select the rows of the `student` table with `tot_cred > 100`
+  - get the "name" attribute
 
+</v-clicks>
 
+<v-click>
 
 `projection(selection(student, tot_cred > 100), ["student_name"])`
 
+</v-click>
+
+</div>
 
 
 ---
 
 ## Another example
 
-What courses are offered in Spring ‘09, and what buildings are they in?
+<div class="p-5">
 
-![](/images/section.png){class="w-150"}
+
+What courses are offered in Spring '09, and what buildings are they in?
+
+<v-click>
+
+![](/images/section.png){class="w-160"}
+
+</v-click>
+
+
+<v-click>
 
 ```
 t = selection(section, semester="Spring" and year=2009)
 projection(t, ["course_id", "building"])
 ```
 
+</v-click>
+
+</div>
+
 
 ---
 
 ## Exercise
 
+
+<div class="p-5">
+
 Write the operations to get the IDs of students who took course CS-101 in Fall 2009.
 
+
+<v-click>
+
+
 ![](/images/takes.png){class="w-120"}
+
+</v-click>
+
+
+<v-click>
+
 
 
 ```
@@ -414,45 +575,83 @@ projection(selection(takes, course_id="CS-101"
   and semester="Fall" and year=2009), ["ID"])
 ```
 
+</v-click>
+
+
+</div>
+
+
 ---
 
-## A ‘union’ example
+## A 'union' example
 
-Get the ID of courses taught in Fall 2009 or Fall 2010
+<div class="p-5">
+
+Get the ID of courses taught in Fall 2009 or Spring 2010
+
+<v-click>
 
 <small>section</small>
-![](/images/section2.png){class="w-120"}
+![](/images/section2.png){class="w-160"}
 
+</v-click>
+
+<v-click>
 
 ```
 t1 = selection(section, semester="Fall" and year=2009)
 t2 = selection(section, semester="Spring" and year=2010)
-projection(union(t1,t2), ["course_ID"])
+projection(union(t1,t2), ["course_id"])
 ```
+
+</v-click>
+
+
+<v-click>
 
 Last line could alternatively be written:
 
+</v-click>
+
+<v-click>
+
 ```
-union(projection(t1,["course_id"]), projection(t2,["course_id"])
+union(projection(t1,["course_id"]), projection(t2,["course_id"]))
 ```
+
+</v-click>
+
+</div>
+
 
 ---
 
 ## Cartesian Product
 
+<div class="p-4">
+
+<v-click>
 
 ![](/images/cartesian.png){class="w-100"}
 
+</v-click>
 
-Question: 
-If you take the product of a table with 5 rows and a table with 8 rows, how many rows do you get? 
+<v-click>
+
+Question:<br>If you take the product of a table with 5 rows and a table with 8 rows, how many rows do you get? 
+
+</v-click>
+
+</div>
+
+
 
 
 ---
 
 ## Using cross product
 
-<div class="p-2">
+<div class="p-4">
 
 
 What are the names of CS instructors and what classes do they teach?
@@ -462,23 +661,37 @@ What are the names of CS instructors and what classes do they teach?
 
 <div>
 
+<v-click>
+
 ![](/images/instructor.png){class="w-100"}
+
+</v-click>
 
 </div>
 
 <div>
 
+<br>
+
+<v-click>
+
 ![](/images/teaches.png){class="w-80"}
 
+</v-click>
+
 </div>
 
 </div>
+
+<v-click>
 
 ```
 t1 = cross(instructor, teaches)
 t2 = selection(t1, instructor.ID = teaches.ID and dept_name = "Comp. Sci.")
 projection(t2, ["name", "course_id"])
 ```
+
+</v-click>
 
 </div>
 
@@ -488,42 +701,57 @@ projection(t2, ["name", "course_id"])
 
 <div class="p-2">
 
+To make it look more like math, you can write the operations using Greek letters and symbols
 
-To make it look more like math, you can write the operations using Greek letters and symbols (as in the "Relational Algebra" handout)
+- selection(section, year=2015)
+  - $\sigma_\text{year=2015} (\text{section})$  	
+  - sigma ($\sigma$) --- "selection" starts with "s"
 
+<br>
 
-selection(section, year=2015)
-
-$\sigma_\text{year=2015} (\text{section})$  	
-
-sigma – select starts with ‘s’
-
-
-projection(section, [“course_id”])
-
+- `projection(section, ["course_id"])`
+  - $\pi_\text{course\_id} (\text{section})$
+  - pi ($\pi$) --- "projection" starts with "p"
 
 
-$\pi_\text{year=2015} (\text{section})$  	
+<br>
 
-
-pi – project starts with ‘p’
+- $\pi_\text{course\_id}(\sigma_\text{year=2015(section)})$
+  - First, filters the section table to only the rows where year = 2015. 
+  - Then, from those remaining rows, keep only the `course_id` column.
 
 </div>
+
+---
+layout: section
+---
+
+
+## Part 2: SQL (DDL/DML)
+
+
 
 ---
 
 ## What is SQL?
 
-<div class="p-2">
+<div class="p-4">
 
+<v-clicks>
 
-- SQL = “Structured Query Language”
+- SQL = "Structured Query Language"
 - Originally developed at IBM in the early 70’s
 - Pronounced “sequel” or S-Q-L 
 - A special-purpose language that lets you express questions about your relational data in a precise way
 
+</v-clicks>
+
+
+<v-click>
 
 SQL serves as the interface between the database and users/applications
+
+</v-click>
 
 </div>
 
@@ -532,8 +760,7 @@ SQL serves as the interface between the database and users/applications
 
 ## Parts of SQL
 
-<div class="p-2">
-
+<div class="p-4">
 
 SQL is not just for writing queries.
 
@@ -552,6 +779,11 @@ It has several parts, including:
   - define queries
   - modify tables (insert/delete/modify tuples)
 
+
+- TCL (Transaction Control Language): `BEGIN`, `COMMIT`, `ROLLBACK`
+
+- DCL (Data Control Language): `GRANT`, `REVOKE`
+
 </v-clicks>
 
 </div>
@@ -561,10 +793,13 @@ It has several parts, including:
 
 ## Defining a relation schema
 
+<div class="p-4">
+
+
 *Question*: What information do you provide when you define a relation schema?
 
-<div class="p-2">
 
+<v-clicks depth="2">
 
 - name of the table
 - names and domains of each attribute
@@ -573,18 +808,29 @@ It has several parts, including:
   - whether an attribute is allowed to have a null value
   - foreign keys
 
+</v-clicks>
+
 </div>
 
-Question: what is a foreign key?
 
 ---
 
 ## SQL for defining a relation schema
 
-<div class="p-2">
+<div class="p-4">
+
+<v-click>
+
+Relation schema: `department(dept_name, building, budget)`
+
+</v-click>
+
+<br>
+
+<v-click>
 
 
-
+DDL table definition:
 ```sql
 CREATE TABLE department (
    dept_name VARCHAR(20) PRIMARY KEY,
@@ -593,22 +839,30 @@ CREATE TABLE department (
 );
 ```
 
-For each attribute we give the attribute name and type.
+</v-click>
 
-We also give the primary key.
+<br>
+
+<v-clicks>
+
+- For each attribute we give the attribute name and type.
+- We also give the primary key.
+
+</v-clicks>
 
 </div>
 
 ---
 
-## Another ‘create table’ example
+## Another 'create table' example
 
-<div class="p-2">
+<div class="p-4">
 
+<v-click>
 
 ```sql
 CREATE TABLE student (
-   ID VARCHAR(20) PRIMARY KEY,
+   student_id VARCHAR(20) PRIMARY KEY,
    name VARCHAR(20) NOT NULL,
    dept_name VARCHAR(20), 
    tot_cred NUMERIC(3, 0),
@@ -616,35 +870,67 @@ CREATE TABLE student (
 );
 ```
 
-The foreign key constraint says:
-- every `dept_name` value in the student table must equal the key of some row in the department table.
+</v-click>
 
-The not-null constraint says:
-- no name value in the student table can be null
+<br>
+
+<v-clicks depth="2">
+
+- The foreign key constraint says:
+  - every `dept_name` value in the student table must equal the key of some row in the department table.
+- The not-null constraint says:
+  - no name value in the student table can be `null`
+- PostgreSQL requires referenced tables exist before creating FKs --- `department` needs to be created first
+
+</v-clicks>
 
 </div>
 
 ---
 
+## SQL Constraints Review
+
+<div class="p-4">
+
+<v-clicks>
+
+- PRIMARY KEY = UNIQUE + NOT NULL
+- FOREIGN KEY enforces referential integrity
+- NOT NULL disallows missing values
+
+</v-clicks>
+
+</div>
+
+
+---
+
 ## Attribute types
 
-<div class="p-2">
+<div class="p-4">
 
+Recall that attributes can only be simple values, like integers, and strings.*
 
-Recall that attributes can only be simple values, like integers, and strings.
-
+<v-click>
 
 Here are some of the main types allowed by SQL:
 
-`VARCHAR(n)`: a variable-length string of length at most n
+</v-click>
 
-`INT`: an integer – ‘integer’ is also okay
+<v-clicks>
 
-`NUMERIC(p, d)`: a fixed-point number of p total digits, with d digits to right of the decimal point.  
-	
-Example: 123.45  `isnumeric(5,2)`
+- `VARCHAR(n)`: a variable-length string of length at most `n`
+- `INT`: an integer --- `integer` is also okay
+- `NUMERIC(p, d)`: a fixed-point number of `p` total digits, with `d` digits to right of the decimal point.  
+	  - Example: 123.45  is `numeric(5,2)`
+- `FLOAT(p)`: a floating-point number with either 4 byte or 8 byte precision
+  - alternatively can use `REAL` (4 bytes) and `DOUBLE PRECISION` (8 bytes)
 
-`FLOAT(p)`: a floating-point number with either 4 byte or 8 byte precision 
+</v-clicks>
+
+<br>
+
+<small>*In the relational model, attributes are atomic (simple) values. PostgreSQL also supports richer types (e.g., arrays/JSON), but we’ll focus on relational design first.</small>
 
 
 </div>
@@ -698,10 +984,17 @@ CREATE TABLE takes (
 </div>
 </div>
 
-ID in the **teaches** table is a foreign key that "points to" the ID field of the **instructor** table.
+`ID` in the **teaches** table is a foreign key that "points to" the `ID` field of the **instructor** table.
 
 
 What to do when the first row is deleted from the instructor table?
+
+- Default: delete is rejected if referenced.
+- `CASCADE`: referencing rows are deleted automatically.
+  - `CASCADE` is powerful; use intentionally.
+
+
+
 
 ---
 
@@ -760,13 +1053,27 @@ INSERT INTO patient VALUES (244, 'Wells', 'Chris', 'F', '1995-02-25', 6);
 
 ---
 
+## More efficient insert
+
+- PostgreSQL supports multi-row insert
+
+```sql
+INSERT INTO patient (patient_no, last_name, first_name, sex, date_of_birth, ward)
+VALUES
+  (454, 'Smith', 'John', 'M', '1978-08-14', 6),
+  (223, 'Jones', 'Peter', 'M', '1985-12-07', 8);
+```
+
+
+---
+
 ## Deleting or Modifying a table
 
 <div class="p-2">
 
 
 ```sql
-DROP TABLE IF EXISTS instructor;`
+DROP TABLE IF EXISTS instructor;
 ```
 
 - delete the instructor schema and its tuples
